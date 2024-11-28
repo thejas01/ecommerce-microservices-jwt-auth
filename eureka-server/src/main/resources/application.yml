@@ -1,0 +1,12 @@
+server:
+  port: 8761  # Port where the Eureka server will run
+
+eureka:
+  client:
+    register-with-eureka: false  # This tells Eureka not to register itself (since it's the server)
+    fetch-registry: false        # This tells Eureka not to fetch the registry from another Eureka server
+  server:
+    enable-self-preservation: false  # Disables self-preservation mode (used for avoiding dropping instances when not reachable)
+    eviction-interval-timer-in-ms: 30000  # Set the eviction time for removing stale services
+  instance:
+    hostname: localhost  # The hostname of the Eureka server (optional)
