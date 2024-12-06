@@ -30,6 +30,7 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+   
 
     // SecurityFilterChain Bean to configure security
     @Bean
