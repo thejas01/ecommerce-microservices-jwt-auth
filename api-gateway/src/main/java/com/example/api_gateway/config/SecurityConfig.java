@@ -5,6 +5,7 @@ package com.example.api_gateway.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,7 +31,15 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-   
+    @Bean
+    public ObjectPostProcessor<Object> objectPostProcessor() {
+        return new ObjectPostProcessor<>() {
+            @Override
+            public <O> O postProcess(O object) {
+                return object;
+            }
+        };
+    }
 
     // SecurityFilterChain Bean to configure security
     @Bean

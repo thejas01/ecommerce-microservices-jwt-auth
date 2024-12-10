@@ -39,7 +39,7 @@ public class JwtTokenProvider {
 
     public Authentication getAuthentication(String token) {
         Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
-        UserPrincipal userPrincipal = new UserPrincipal(claims.getSubject());
+        UserPrincipal userPrincipal = new CustomUserPrincipal(claims.getSubject());
         return new UsernamePasswordAuthenticationToken(userPrincipal, "", ((AbstractAuthenticationToken) userPrincipal).getAuthorities());
     }
 }
